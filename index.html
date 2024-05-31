@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FZPD7XRE2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7FZPD7XRE2');
+  </script>
+
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
@@ -44,6 +54,14 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
 
@@ -66,15 +84,14 @@
                       <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=Um9rfMwAAAAJ" target="_blank">Alexandre Levy</a>,</span>
                       <span class="author-block">
                         <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=3LYW1zMAAAAJ" target="_blank">Antonio M. López</a></span>
-                        </div>
                     </span>
                   </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">Computer Vision Center<br>Intelligent Vehicles Symposium (IV) 2024</span>
-                  </div>
-
+                  
                   <div class="column has-text-centered">
+                    <div class="is-size-5 publication-authors">
+                      <span class="author-block">Computer Vision Center<br>Intelligent Vehicles Symposium (IV) 2024</span>
+                    </div>
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
@@ -123,11 +140,11 @@
     <div class="hero-body">
       <video poster="" id="tree" autoplay controls muted loop height="100%">
         <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
+        <source src="static/videos/cilplusplus_attloss_town05_route05_softrainsunset_55hdata_faster.mp4"
         type="video/mp4">
       </video>
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+      <h2 class="subtitle has-text-justified">
+        By <strong>optimizing the attention weights</strong> of a pure vision-based end-to-end driving model, we are able to increase the model's interpretability and enhance its driving capabilities with the available data, at <em>no additional compute cost</em> during testing time.
       </h2>
     </div>
   </div>
@@ -152,197 +169,72 @@
 <!-- End paper abstract -->
 
 
-<details>
-  <summary><strong>I have keys but no doors. I have space but no room. You can enter but can’t leave. What am I?</strong></summary>
-  A keyboard.
-</details>
-
-
-<!-- Image carousel -->
 <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Low Data Regime Experiments</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/LowDataPlots_DrivingHours.png" alt="Driving results of the models trained with and without the Attention Loss while increasing the amount of training data."/>
-        <h2 class="subtitle has-text-centered">
-          Driving results of the models trained with and without the Attention Loss while increasing the amount of training data. Training data was collected in <code>Town01</code> and models were evaluated in <code>Town02</code> in CARLA, using new weather conditions.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/LowDataPlots_Weathers.png" alt="Driving results of the models trained with and without the Attention Loss while increasing the number of weather types in the training data (2 hours of data per weather)."/>
-        <h2 class="subtitle has-text-centered">
-          Driving results of the models trained with and without the Attention Loss while increasing the number of weather types in the training data (2 hours of data per weather). Training data was collected in <code>Town01</code> and models were evaluated in <code>Town02</code> in CARLA, using new weather conditions.
-        </h2>
-      </div>
+  <div class="container">
+    <h2 class="title is-3">What happens if we have a low amount of training data?</h2>
+    <p>When dealing with a low amount of training data (below 8 hours in total), we can further subdivide this into two categories: low amount and low diversity. For the former, we train the CIL++ model with and without the Attention Loss while decreasing the amount of training data (akin to lowering the FPS at which the data was collected).</p>
+    <div class="item">
+      <img src="static/images/LowDataPlots_DrivingHours.png" alt="" class="center"/>
+    </div>
+    <p>For the low diversity experiments, we start with one weather type in the data and slowly add the rest, one by one. Each weather type contains approximately 2 hours of data, so that the original 8 hours of data will contain the four weather types: <code>ClearNoon</code> (CN), <code>ClearSunset</code> (CS), <code>HardRainNoon</code> (HRN), and <code>WetNoon</code> (WN).</p>
+    <div class="item">
+      <img src="static/images/LowDataPlots_Weathers.png" alt="" class="center"/>
   </div>
-</div>
-</div>
+  <p>We can see that the results are consistent: adding the Attention Loss during training boosts performance of the model by up to 4 times, requiring less data to be stored and trained with. For both, the training data was collected in <code>Town01</code> and models were evaluated in <code>Town02</code> in CARLA, using new weather conditions.</p>
 </section>
-<!-- End image carousel -->
 
-
-
-
-<!-- Table carousel -->
 <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">High Data Regime Experiments</h2>
-      <p>lkajs</p>
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">        
-        <table>
-          <caption>
-            Using the <em>synthetic attention masks</em> as different types of input. Soft Mask (SM) appends the mask as a fourth channel to the input RGB image. Hard Mask (HM) does an element-wise multiplication with the RGB channels.
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col"><strong>SR↑</strong></th>
-              <th scope="col"><strong>DS↑</strong></th>
-              <th scope="col"><strong>RC↑</strong></th>
-              <th scope="col"><strong>IS↑</strong></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">CIL++</th>
-              <td>41.33±8.08</td>
-              <td>60.45±4.6</td>
-              <td>73.03±4.18</td>
-              <td>0.77±0.03</td>
-            </tr>
-            <tr>
-              <th scope="row">w/SM</th>
-              <td>42.00±7.21</td>
-              <td>59.29±5.49</td>
-              <td>70.12±4.32</td>
-              <td>0.78±0.02</td>
-            </tr>
-            <tr>
-              <th scope="row">  w/HM</th>
-              <td>66.00±9.17</td>
-              <td>77.34±6.93</td>
-              <td>84.32±5.83</td>
-              <td>0.87±0.04</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row">  w/Att. Loss</th>
-              <td>79.33±13.01</td>
-              <td>85.67±7.84</td>
-              <td>91.13±6.21</td>
-              <td>0.92±0.05</td>
-            </tr>
-          </tfoot>
-        </table>
-
-      </div>
-      <div class="item">
-        <table>
-          <caption>
-            We now test the effects of errors when predicting the <em>synthetic attention masks</em> to the Soft and Hard Mask paradigms during training and validation. For comparison, we train a model with noisy masks using the Attention Loss, but note that for our case, we do not need to predict these during validation. 
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col"><strong>SR↑</strong></th>
-              <th scope="col"><strong>DS↑</strong></th>
-              <th scope="col"><strong>RC↑</strong></th>
-              <th scope="col"><strong>IS↑</strong></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">CIL++</th>
-              <td>41.33±8.08</td>
-              <td>60.45±4.6</td>
-              <td>73.03±4.18</td>
-              <td>0.77±0.03</td>
-            </tr>
-            <tr>
-              <th scope="row">w/SM (Noisy Pred. Masks)</th>
-              <td>35.33±7.02</td>
-              <td>56.38±1.32</td>
-              <td>68.38±0.58</td>
-              <td>0.77±0.01</td>
-            </tr>
-            <tr>
-              <th scope="row">  w/HM (Noisy Pred. Masks)</th>
-              <td>66.00±7.21</td>
-              <td>76.36±3.72</td>
-              <td>83.46±4.48</td>
-              <td>0.87±0.01</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row">  w/Att. Loss (Noisy Masks)</th>
-              <td>71.33±6.11</td>
-              <td>80.36±6.88</td>
-              <td>89.46±3.97</td>
-              <td>0.87±0.05</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+  <div class="container">
+    <h2 class="title is-3">How will the model perform with real, noisy data?</h2>
+    <p>When we collect data in the real world, we won't have perfect <em>synthetic attention maps</em> \(\mathcal{M}\). They will typically be noisy, usually by error accumulation of the model we use to predict the masks \(\widehat{\mathcal{M}})\. To mimic these noisy masks, we define a function \(f\) that will add Perlin noise to the masks and other granular noise to larger objects. We show some examples in the following figure:</p>
+    <div class="item">
+      <img src="static/images/masks_predictions_corruptions.png" alt="" class="center"/>
+    </div>
+    <p>Using the <em>synthetic attention masks</em> as different types of input. Soft Mask (SM) appends the mask as a fourth channel to the input RGB image. Hard Mask (HM) does an element-wise multiplication with the RGB channels.
+    .We now test the effects of errors when predicting the <em>synthetic attention masks</em> to the Soft and Hard Mask paradigms during training and validation. For comparison, we train a model with noisy masks using the Attention Loss, but note that for our case, we do not need to predict these during validation.</p>
+    <div class="item">
+      <img src="static/images/table_highdata_sl.png" alt="" class="center"/>
+    </div>
+    <p>ML stuff</p>
+    <div class="item">
+      <img src="static/images/table_highdata_ml.png" alt="" class="center"/>
   </div>
-</div>
-</div>
 </section>
-<!-- End table carousel -->
-
-
-<!-- Youtube video -->
-<!-- <section class="hero is-small is-light"> -->
-  <!-- <div class="hero-body"> -->
-    <!-- <div class="container"> -->
-      <!-- Paper video. -->
-      <!-- <h2 class="title is-3">Video Presentation</h2> -->
-      <!-- <div class="columns is-centered has-text-centered"> -->
-        <!-- <div class="column is-four-fifths"> -->
-          
-          <!-- <div class="publication-video"> -->
-            <!-- Youtube embed code here -->
-            <!-- <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-          <!-- </div> -->
-        <!-- </div> -->
-      <!-- </div> -->
-    <!-- </div> -->
-  <!-- </div> -->
-<!-- </section> -->
-<!-- End youtube video -->
-
 
 <!-- Video carousel -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
+      <h2 class="title is-3">Additional Visualizations</h2>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
+          <video poster="" id="video1" autoplay controls muted loop width="100%">
             <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
+            <source src="static/videos/cilplusplus_attention_town02_route16_softrainsunset_14hdata_faster.mp4"
             type="video/mp4">
           </video>
+          <h2 class="subtitle has-text-justified">
+            CIL++ trained with Attention Loss.  <code>Town01</code> and models were evaluated in <code>Town02</code> in CARLA, using new weather conditions.
+          </h2>
         </div>
         <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
+          <video poster="" id="video2" autoplay controls muted loop width="100%">
             <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
+            <source src="static/videos/cilplusplus_noattention_town02_route16_softrainsunset_14hdata_faster.mp4"
             type="video/mp4">
           </video>
         </div>
         <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+          <video poster="" id="video3" autoplay controls muted loop width="100%">\
             <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
+            <source src="static/videos/cilplusplus_attention_town02_route24_clearnight_14hdata_faster.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video4">
+          <video poster="" id="video4" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/cilplusplus_noattention_town02_route24_clearnight_14hdata_faster.mp4"
             type="video/mp4">
           </video>
         </div>
@@ -376,7 +268,8 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code >
+      <!-- language:python -->
+      <pre><code class="language-bibtex">
         @article{porres2024guidingattention,
           title={Guiding Attention in End-to-End Driving Models},
           author={Porres, Diego and Xiao, Yi and Villalonga, Gabriel and Levy, Alexandre and López, Antonio M.},
