@@ -75,22 +75,25 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=Xuv3WuIAAAAJ&hl=en&authuser=1" target="_blank">Diego Porres</a>,</span>
+                <a href="https://scholar.google.com/citations?user=Xuv3WuIAAAAJ&hl=en&authuser=1" target="_blank">Diego Porres</a><sup>1</sup>,</span>
                 <span class="author-block">
-                  <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=_2mQDJEAAAAJ" target="_blank">Yi Xiao</a>,</span>
+                  <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=_2mQDJEAAAAJ" target="_blank">Yi Xiao</a><sup>1</sup>,</span>
                   <span class="author-block">
-                    <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=byJeaV0AAAAJ" target="_blank">Gabriel Villalonga</a>,</span>
+                    <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=byJeaV0AAAAJ" target="_blank">Gabriel Villalonga</a><sup>1</sup>,</span>
                     <span class="author-block">
-                      <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=Um9rfMwAAAAJ" target="_blank">Alexandre Levy</a>,</span>
+                      <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=Um9rfMwAAAAJ" target="_blank">Alexandre Levy</a><sup>1</sup>,</span>
                       <span class="author-block">
-                        <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=3LYW1zMAAAAJ" target="_blank">Antonio M. López</a></span>
+                        <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=3LYW1zMAAAAJ" target="_blank">Antonio M. López</a><sup>1,2</sup></span>
                     </span>
                   </div>
 
                   
                   <div class="column has-text-centered">
                     <div class="is-size-5 publication-authors">
-                      <span class="author-block">Computer Vision Center<br>Intelligent Vehicles Symposium (IV) 2024</span>
+                      <span class="author-block"><sup>1</sup>Computer Vision Center, <sup>2</sup>Universitat Autònoma de Barcelona</span>
+                    </div>
+                    <div clss="is-size-5 publication-venue">
+                      <span class="publication-venue">Intelligent Vehicles Symposium (IV) 2024</span>
                     </div>
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
@@ -176,8 +179,9 @@
       <div class="content has-text-justified">
       <p>Vision activation maps of end-to-end driving models are usually non-human readable, even if the model manages to drive perfectly in the environment it is deployed in. We seek, then, to train these activation maps with a ground-truth <em>synthetic attention mask</em> (whether human or based from sensor readings),and analyze their effects on the driving performance of a pure-vision based end-to-end driving model CIL++. We do so with our proposed <strong>Attention Loss</strong>, with the added benefit of keeping the original architecture.</p>
     </div>
-      <div class="item">
-        <img src="static/images/ArchAttLoss_v2_tiny.png" alt="" class="center" width="100%"/> </div>
+    <div class="item">
+      <img src="static/images/ArchAttLoss_v2_tiny.png" alt="" class="center" width="100%"/>
+    </div>
   </div>
 </section>
 
@@ -212,20 +216,20 @@
       <p>When we collect data in the real world, we won't have perfect <em>synthetic attention masks</em> \(\mathcal{M}\). They will typically be noisy, usually by error accumulation of the models we use to predict the semantic segmentation, depth, or both. To mimic these noisy masks, we define a function \( f \) that will add Perlin noise to the masks and other granular noise to larger objects. Additionally, we train a U-Net to obtain \( \widehat{\mathcal{M}} \), the predicted mask given an input image. We show some examples in the following figure:</p>
     </div>
       <div class="item">
-        <img src="static/images/masks_predictions_corruptions.png" alt="" class="center"/>
+        <img src="static/images/masks_predictions_corruptions.png" alt="" class="center" width="90%"/>
       </div>
       <div class="content has-text-justified">
       <p>
         Typically, the <em>synthetic attention masks</em> are used as input in different ways. Soft Mask (SM) appends the mask as a fourth channel to the input RGB image. Hard Mask (HM) does an element-wise multiplication with the RGB channels, effectively removing "unnecessary" data. When predicting the masks, we must do so during training and testing time, increasing the required compute. For comparison, we train a model with noisy masks using the Attention Loss, but note that for our case, we do not need to predict these during validation. In the following table, we train all models using 14 hours of driving data in <code>Town01</code> and validate the driving in <code>Town02</code>. Our proposed loss obtains the best driving results without the need to remove parts of the input.</p>
     </div>
       <div class="item">
-        <img src="static/images/table_highdata_sl.png" alt="" class="center"/>
+        <img src="static/images/table_highdata_sl.png" alt="" class="center" width="75%"/>
       </div>
       <div class="content has-text-justified">
       <p>To test the high-data regime in more complex scenarios, we collect 55 hours of driving data in multiple towns in CARLA: <code>Town01</code>, <code>Town02</code>, <code>Town03</code>, <code>Town04</code>, and <code>Town06</code>, and test in the unseen <code>Town05</code> under new weather conditions. We note a particular boost in the Driving Score and Infraction Score, resulting from a better adherence to the traffic rules from the model.</p>
     </div>
       <div class="item">
-        <img src="static/images/table_highdata_ml.png" alt="" class="center"/>
+        <img src="static/images/table_highdata_ml.png" alt="" class="center" width="75%"/>
     </div>
   </div>
 </section>
@@ -290,15 +294,13 @@
 
 <!-- Paper poster -->
 <section class="hero is-small is-light" id="poster">
-  <div class="container">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title">Poster</h2>
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
 
-        <iframe  src="static/pdfs/IEEEIV2024_GuidingAttentionPoster.pdf" width="100%" height="550">
-            </iframe>
-          
-        </div>
+      <iframe  src="static/pdfs/IEEEIV2024_GuidingAttentionPoster.pdf" width="100%" height="550">
+          </iframe>
+        
       </div>
     </div>
   </section>
