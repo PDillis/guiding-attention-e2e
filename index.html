@@ -109,12 +109,12 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/PDillis/guiding-attention-e2e" target="_blank"
+                    <a href="https://github.com/PDillis/guiding-e2e" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code (soon!)</span>
+                    <span>Code</span>
                   </a>
                 </span>
 
@@ -177,10 +177,25 @@
     <div class="hero-body">
       <h2 class="title is-3">Introduction</h2>
       <div class="content has-text-justified">
-      <p>Vision activation maps of end-to-end driving models are usually non-human readable, even if the model manages to drive perfectly in the environment it is deployed in. We seek, then, to train these activation maps with a ground-truth <em>synthetic attention mask</em> (whether human or based from sensor readings),and analyze their effects on the driving performance of a pure-vision based end-to-end driving model CIL++. We do so with our proposed <strong>Attention Loss</strong>, with the added benefit of keeping the original architecture.</p>
+      <p>Vision activation maps of end-to-end driving models are usually non-human readable, even if the model manages to drive perfectly in the environment it is deployed in. We seek, then, to train these activation maps with a ground-truth <em>synthetic attention mask</em> (whether obtained from humans or based from sensor readings), and analyze their effects on the driving performance of a pure-vision based end-to-end driving model <a href="https://arxiv.org/abs/2302.03198">CIL++</a>. We do so with our proposed <strong>Attention Loss</strong>, with the added benefit of keeping the original architecture.</p>
     </div>
     <div class="item">
       <img src="static/images/ArchAttLoss_v2_tiny.png" alt="" class="center" width="100%"/>
+    </div>
+  </div>
+</section>
+
+<section class="heri is-small" id="contributions">
+  <div class="container">
+    <div class="hero-body">
+      <h2 class="title is-3">Contributions</h2>
+      <div class="content has-text-justified">
+      <p>In short, our main contributions are as follows:</p>
+      <ul>
+        <li>We propose a novel <strong>Attention Loss</strong> to guide the attention of end-to-end driving models, which does not require the salient semantic maps during testing time.</li>
+        <li>We demonstrate that the Attention Loss can be used to train better driving models with <strong>low amounts of data</strong>, especially when computational resources are scarce.</li>
+        <li>We show that the Attention Loss can be used with <strong>noisy masks</strong>, which are more representative of the real-world data.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -189,7 +204,7 @@
   <div class="container">
     <div class="hero-body">
       <h2 class="title is-3">Results</h2>
-      <h2 class="title is-5">What happens if we have a low amount of training data?</h2>
+      <h2 class="title is-5">Increased sample efficiency</h2>
       <div class="content has-text-justified">
       <p>When dealing with a low amount of training data (below 8 hours in total), we can further subdivide this into two categories: low amount and low diversity. For the former, we train the CIL++ model with and without the Attention Loss while decreasing the amount of training data (akin to lowering the FPS at which the data was collected).</p>
     </div>
@@ -241,7 +256,7 @@
       <div class="container">
         <h2 class="title is-3">Additional Visualizations</h2>
         <div class="content has-text-justified">
-        <p>For the following, we show the attention maps of the last layer of the Transformer Encoder for models trained with 14 hours of data collected in <code>Town01</code>. We perform the evaluation in <code>Town02</code> under new weather conditions.</p>
+        <p>For the following, we show the attention maps of the last layer of the Transformer Encoder for models trained with 14 hours of data collected in <code>Town01</code>. As mentioned above, we do not need to have access to the ground truth masks as the Transformer Encoder has learned to correctly mimic their distribution. We perform the evaluation in <code>Town02</code> under new weather conditions.</p>
       </div>
         <div id="results-carousel" class="carousel results-carousel">
           <div class="item item-video1">
